@@ -1,0 +1,20 @@
+# Template file for 'gols'
+pkgname=gols
+version=0.3.1
+revision=1
+build_style=go
+go_import_path="github.com/elbachir-one/${pkgname}"
+short_desc="A enhanced command-line lister written in Go"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/elbachir-one/gols"
+distfiles="https://github.com/elbachir-one/gols/archive/refs/tags/v${version}.tar.gz"
+checksum=3aa76cab0fd890ee324dbadcc3bfa1b55303a355adc5e1007807d65a2a3f769a
+
+do_build() {
+    go build -o gols .
+}
+
+do_install() {
+    install -Dm755 gols "$DESTDIR"/usr/bin/gols
+}
