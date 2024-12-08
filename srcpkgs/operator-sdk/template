@@ -1,7 +1,7 @@
 # Template file for 'operator-sdk'
 pkgname=operator-sdk
-version=0.18.1
-revision=4
+version=1.38.0
+revision=1
 build_style=go
 go_import_path="github.com/operator-framework/operator-sdk"
 go_package="${go_import_path}/cmd/operator-sdk"
@@ -11,4 +11,4 @@ maintainer="Orphaned <orphan@voidlinux.org>"
 license="Apache-2.0"
 homepage="https://github.com/operator-framework/operator-sdk"
 distfiles="https://github.com/operator-framework/operator-sdk/archive/v${version}.tar.gz"
-checksum=33680b9236ea7da51cb7b165dc624b512f04e3e9a2bf592101bfc3b312e340f8
+checksum=cfe914e67443d0077f901f9f55440a613b61af1517411d211c4ebbed0d846eee
