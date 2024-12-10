@@ -1,0 +1,36 @@
+--- cinnamon-6.4.2/src/cinnamon-global.c	2024-12-05 12:58:41.000000000 +0100
++++ cinnamon-6.4.2/src/cinnamon-global.c	2024-12-10 01:38:11.854767848 +0100
+@@ -17,7 +17,10 @@
+ #include <cogl-pango/cogl-pango.h>
+ 
+ #define GNOME_DESKTOP_USE_UNSTABLE_API
++
++#ifdef HAVE_SYSTEMD
+ #include <libcinnamon-desktop/gnome-systemd.h>
++#endif
+ 
+ static CinnamonGlobal *the_object = NULL;
+ 
+@@ -1409,12 +1412,14 @@
+   if (app_name == NULL)
+     app_name = g_app_info_get_executable (info);
+ 
+-  /* Start async request; we don't care about the result */
++  /* Disable systemd scope start if not using systemd */
++  #ifdef HAVE_SYSTEMD
+   gnome_start_systemd_scope (app_name,
+                              pid,
+                              NULL,
+                              NULL,
+                              NULL, NULL, NULL);
++  #endif
+ }
+ 
+ /**
+@@ -1625,4 +1630,4 @@
+                                       "xxxxxxxxxxxxxxxxxxxxxxxx"
+         );
+     }
+-}
+\ No newline at end of file
++}
