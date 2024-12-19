@@ -1,0 +1,20 @@
+# Template file for 'stopmotion'
+pkgname=stopmotion
+version=0.8.6
+revision=1
+build_style=cmake
+hostmakedepends="pkg-config"
+makedepends="qt6-base-devel libarchive-devel libxml2-devel libvorbis-devel qt5-devel qt5-multimedia-devel qt5-tools-devel libtar-devel"
+short_desc="Grab the frames of your animation"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://invent.kde.org/multimedia/stopmotion"
+changelog="https://invent.kde.org/multimedia/stopmotion/-/blob/master/CHANGELOG.md"
+distfiles="https://invent.kde.org/multimedia/${pkgname}/-/archive/${version}/${pkgname}-${version}.tar.gz"
+checksum=fc668f5ae91b388ba0734fea9fe9a0eb7170ad53a7582422b636992c9e04ad73
+
+do_install() {
+	vinstall logo.png 644 usr/share/icons/hicolor/32x32/apps logo.png
+	vinstall stopmotion.1 644 usr/share/man/man1/stopmotion.1
+	vinstall stopmotion.desktop 644 usr/share/applications
+}
