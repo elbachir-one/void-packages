@@ -1,0 +1,14 @@
+# Template file for 'python3-unyt'
+pkgname=python3-unyt
+version=3.0.4
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-wheel python3-setuptools_scm"
+makedepends="python3-devel"
+depends="python3-numpy python3-packaging python3-sympy"
+short_desc="Handle, manipulate, and convert data with units in Python"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/yt-project/unyt"
+distfiles="https://github.com/yt-project/unyt/archive/refs/tags/v${version}.tar.gz"
+checksum=83a9d26682e7717b38e889c914645ece21ebcb75069f477432bf560250970772

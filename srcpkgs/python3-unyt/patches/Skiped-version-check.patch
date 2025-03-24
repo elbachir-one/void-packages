@@ -1,0 +1,129 @@
+From c79fb82ca41510fe322b370141db11cf11d536f8 Mon Sep 17 00:00:00 2001
+From: elbachir-one <bachiralfa@gmail.com>
+Date: Sun, 23 Mar 2025 15:10:10 +0000
+Subject: [PATCH] Skiped version check
+
+---
+ pyproject.toml | 91 ++------------------------------------------------
+ 1 file changed, 2 insertions(+), 89 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 53eb2e6..a19ee59 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,13 +1,12 @@
+ [build-system]
+ requires = [
+-  "setuptools>=61.2",
+-  "setuptools_scm[toml]>=7.0.1",
++  "setuptools>=61.2"
+ ]
+-
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "unyt"
++version = "3.0.4"  # Manually specify version
+ description = "A package for handling numpy arrays with units"
+ authors = [
+     { name = "The yt project", email = "yt-dev@python.org" },
+@@ -29,21 +28,6 @@ dependencies = [
+     "sympy>=1.7",
+     "packaging>=20.9",
+ ]
+-dynamic = [
+-    "version",
+-]
+-
+-[project.readme]
+-file = "README.rst"
+-content-type = "text/x-rst"
+-
+-[project.license]
+-text = "BSD-3-Clause"
+-
+-[project.urls]
+-Homepage = "https://github.com/yt-project/unyt"
+-Documentation = "https://unyt.readthedocs.io/en/stable/index.html"
+-Changelog = "https://unyt.readthedocs.io/en/stable/history.html"
+ 
+ [tool.setuptools]
+ include-package-data = true
+@@ -65,74 +49,3 @@ namespaces = false
+ unyt = [
+     "tests/data/old_json_registry.txt",
+ ]
+-
+-
+-[tool.black]
+-exclude = '''
+-(
+-  /(
+-      \.eggs
+-    | \.git
+-    | \.hg
+-    | \.mypy_cache
+-    | \.tox
+-    | \.venv
+-    | _build
+-    | buck-out
+-    | build
+-    | dist
+-    | _version.py
+-  )
+-)
+-'''
+-
+-[tool.ruff]
+-exclude = [
+-    ".*/",
+-    "benchmarks/*.py",
+-    "paper/*.py",
+-    "*/_version.py",
+-    "*/__init__.py",
+-]
+-[tool.ruff.lint]
+-ignore = [
+-    "E501",
+-    "B904",
+-]
+-select = [
+-    "E",
+-    "F",
+-    "W",
+-    "C4",  # flake8-comprehensions
+-    "B",   # flake8-bugbear
+-    "YTT", # flake8-2020
+-    "I",   # isort
+-    "UP",  # pyupgrade
+-    "NPY", # numpy specific rules
+-]
+-
+-[tool.ruff.lint.isort]
+-combine-as-imports = true
+-
+-[tool.setuptools_scm]
+-write_to = "unyt/_version.py"
+-version_scheme = "post-release"
+-
+-[tool.pytest.ini_options]
+-addopts = "--ignore=benchmarks --ignore=paper --ignore=unyt/_mpl_array_converter --color=yes"
+-filterwarnings = [
+-    "error",
+-    "ignore:Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.:UserWarning",
+-    "ignore:FigureCanvasAgg is non-interactive, and thus cannot be shown:UserWarning",
+-    "ignore:distutils Version classes are deprecated. Use packaging.version instead.:DeprecationWarning",
+-    'ignore:datetime\.datetime\.utcfromtimestamp\(\) is deprecated:DeprecationWarning', # https://github.com/dateutil/dateutil/pull/1285
+-    'ignore:mpnumeric is deprecated:DeprecationWarning', # sympy 1.12 VS mpmath 1.4, solution: https://github.com/sympy/sympy/pull/25290
+-]
+-
+-[tool.coverage.run]
+-omit = [
+-    "docs/*",
+-    "unyt/_version.py",
+-    "unyt/_on_demand_imports.py",
+-    "unyt/tests/test_linters.py",
+-]
+-- 
+2.48.1
+
