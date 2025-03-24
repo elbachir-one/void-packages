@@ -1,0 +1,14 @@
+# Template file for 'python3-ewah_bool_utils'
+pkgname=python3-ewah_bool_utils
+version=1.2.2
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-wheel python3-setuptools python3-numpy python3-Cython"
+makedepends="python3-devel"
+depends="python3-numpy"
+short_desc="EWAH Bool Array utils for yt"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/yt-project/ewah_bool_utils"
+distfiles="https://github.com/yt-project/ewah_bool_utils/archive/refs/tags/v${version}.tar.gz"
+checksum=40fae0327a557df7bdc06a30855b4d0e123a033cdc7f3e6a211620644ccaea25
