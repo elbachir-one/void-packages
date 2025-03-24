@@ -1,0 +1,17 @@
+# Template file for 'yt'
+pkgname=yt
+version=4.4.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-wheel python3-setuptools python3-ewah_bool_utils
+ python3-Cython"
+makedepends="python3-devel"
+depends="python3-Pillow python3-ewah_bool_utils python3-matplotlib
+ python3-more-itertools python3-numpy python3-packaging python3-tomli-w
+ python3-tqdm python3-cmyt python3-unyt"
+short_desc="Python library for analyzing and visualizing volumetric data"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/yt-project/yt"
+distfiles="https://github.com/yt-project/yt/archive/refs/tags/yt-${version}.tar.gz"
+checksum=3a1d4cd3e9d2416f571cd41871b7836dced4f1adb18ca2add7d23a94a8939115
