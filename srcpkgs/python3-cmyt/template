@@ -5,7 +5,9 @@ revision=1
 build_style=python3-pep517
 hostmakedepends="python3-wheel python3-setuptools hatchling"
 makedepends="python3-devel"
-depends="python3-matplotlib python3-numpy"
+depends="python3-matplotlib python3-numpy python3-contourpy python3-cycler
+ python3-fonttools  python3-kiwisolver python3-Pillow python3-parsing
+ python-dateutil python-six"
 short_desc="yt-native colormaps"
 maintainer="elbachir-one <bachiralfa@gmail.com>"
 license="GPL-3.0-or-later"
