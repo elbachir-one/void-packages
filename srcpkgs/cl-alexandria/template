@@ -1,0 +1,50 @@
+# Template file for 'cl-alexandria'
+pkgname=cl-alexandria
+version=1.4
+revision=1
+build_style=gnu-makefile
+make_build_args=" -C doc html info"
+hostmakedepends="sbcl texlive-core texinfo"
+depends="sbcl ecl"
+short_desc="Set of Common Lisp Utilities"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="MIT"
+homepage="https://alexandria.common-lisp.dev"
+distfiles="https://gitlab.common-lisp.net/alexandria/alexandria/-/archive/v${version}/alexandria-v${version}.tar.gz"
+checksum=0512aec38d054a20daa66e9983cf8a98151582d7e2307e49e8c1b4a61bbb779a
+
+_pkgname=alexandria
+
+do_build() {
+	make -C doc html info
+}
+
+do_check() {
+	sbcl --script ${wrksrc}/../run-tests.lisp
+}
+
+do_install() {
+	cd "$wrksrc"
+
+	# create target dirs
+	vmkdir usr/share/common-lisp/source/${pkgname}
+	vmkdir usr/share/common-lisp/systems
+
+	# copy library files
+	cp -vr "${_pkgname}.asd" alexandria-{1,2} \
+	"${DESTDIR}/usr/share/common-lisp/source/${pkgname}"
+
+	# create symlink
+	ln -s ../source/${pkgname}/${_pkgname}.asd \
+	"${DESTDIR}/usr/share/common-lisp/systems/${_pkgname}.asd"
+
+	# docs
+	vdoc README
+	vdoc doc/alexandria.html
+
+	# info manual
+	vinstall doc/alexandria.info 644 usr/share/info
+
+	# license
+	vlicense LICENCE
+}
