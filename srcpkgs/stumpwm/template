@@ -1,0 +1,25 @@
+# Template file for 'stumpwm'
+pkgname=stumpwm
+version=24.11
+revision=1
+hostmakedepends="sbcl autoconf"
+makedepends="clx cl-alexandria cl-ppcre"
+depends="sbcl clx cl-alexandria cl-ppcre"
+short_desc="Tiling, keyboard-driven window manager in Common Lisp"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="GPL-2.0-or-later"
+homepage="https://stumpwm.github.io/"
+distfiles="https://github.com/stumpwm/stumpwm/archive/${version}.tar.gz"
+checksum=1f2a5edf30dc8897234845514ea927478645cf8fb6b05b9ba7fe7a898720e08d
+
+do_build() {
+	./autogen.sh
+	./configure
+	make
+}
+
+do_install() {
+	make install DESTDIR=${DESTDIR}
+	vmkdir usr/share/doc/${pkgname}
+	vcopy README.md usr/share/doc/${pkgname}
+}
