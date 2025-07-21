@@ -1,0 +1,29 @@
+# Template file for 'cl-ppcre'
+pkgname=cl-ppcre
+version=2.1.2
+revision=1
+hostmakedepends="ecl"
+short_desc="Perl-compatible, portable regexp library for Common Lisp"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="BSD-2-Clause"
+homepage="http://www.weitz.de/cl-ppcre/"
+distfiles="https://github.com/edicl/cl-ppcre/archive/v${version}.tar.gz"
+checksum=2ddd99706fa2b442d3eb12ea36bb25f57613fc82e5eb91c4fcaec3b7ce4cfe85
+
+do_install() {
+	mkdir -p "${DESTDIR}/usr/share/common-lisp/source/${pkgname}"
+	mkdir -p "${DESTDIR}/usr/share/common-lisp/systems"
+	mkdir -p "${DESTDIR}/usr/share/licenses/${pkgname}"
+
+	cd "${WRKSRC}"
+	install -m 644 *.lisp "${DESTDIR}/usr/share/common-lisp/source/${pkgname}/"
+	install -m 644 *.asd "${DESTDIR}/usr/share/common-lisp/source/${pkgname}/"
+
+	cd "${DESTDIR}/usr/share/common-lisp/systems"
+	ln -sf "../source/${pkgname}/${pkgname}.asd" .
+	ln -sf "../source/${pkgname}/${pkgname}-unicode.asd" .
+}
+
+post_install() {
+	vlicense LICENSE
+}
