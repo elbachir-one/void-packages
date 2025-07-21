@@ -1,0 +1,48 @@
+# Template file for 'clx'
+pkgname=clx
+version=0.7.7
+revision=1
+hostmakedepends="texinfo"
+makedepends="xorg-server sbcl"
+depends="xorg-server sbcl"
+short_desc="X11 client for Common Lisp"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="BSD-2-Clause"
+homepage="https://github.com/sharplispers/clx"
+distfiles="https://github.com/sharplispers/clx/archive/refs/tags/${version}.tar.gz"
+checksum=51c62d2fdd75c1390b940b0ded16880d378ecf8b5c556917611f4804dcadf981
+
+do_build() {
+	cd "${wrksrc}/manual"
+	makeinfo "${pkgname}.texinfo"
+}
+
+do_install() {
+	cd "${wrksrc}"
+
+	install -d "${DESTDIR}/usr/share/common-lisp/source/clx"
+	install -m 644 *.lisp -t "${DESTDIR}/usr/share/common-lisp/source/clx"
+
+	install -d "${DESTDIR}/usr/share/common-lisp/source/clx/extensions"
+	install -m 644 extensions/*.lisp -t "${DESTDIR}/usr/share/common-lisp/source/clx/extensions"
+
+	install -m 644 clx.asd -t "${DESTDIR}/usr/share/common-lisp/source/clx"
+
+	install -d "${DESTDIR}/usr/share/common-lisp/source/clx/debug"
+	install -m 644 debug/*.lisp -t "${DESTDIR}/usr/share/common-lisp/source/clx/debug"
+
+	install -d "${DESTDIR}/usr/share/common-lisp/source/clx/demo"
+	install -m 644 demo/*.lisp -t "${DESTDIR}/usr/share/common-lisp/source/clx/demo"
+
+	install -d "${DESTDIR}/usr/share/info"
+	install -m 644 manual/clx.info -t "${DESTDIR}/usr/share/info"
+
+	install -d "${DESTDIR}/usr/share/licenses/${pkgname}"
+
+	install -d "${DESTDIR}/usr/share/common-lisp/systems"
+	ln -s "../source/clx/clx.asd" "${DESTDIR}/usr/share/common-lisp/systems/clx.asd"
+}
+
+post_install() {
+	vlicense LICENSE
+}
