@@ -1,0 +1,12 @@
+# Template file for 'simdutf'
+pkgname=simdutf
+version=7.3.3
+revision=1
+build_style=cmake
+hostmakedepends="cmake pkg-config"
+short_desc="Unicode routines (UTF8, UTF16, UTF32) and Base64"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="MIT"
+homepage="https://github.com/simdutf/simdutf"
+distfiles="https://github.com/simdutf/simdutf/archive/refs/tags/v${version}.tar.gz"
+checksum=6d720ecdd2e524790c0204561f559b755952d8a836a237b2b533f716ab6fdfbb
