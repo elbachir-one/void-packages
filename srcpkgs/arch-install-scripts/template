@@ -1,0 +1,17 @@
+# Template file for 'arch-install-scripts'
+pkgname=arch-install-scripts
+version=29
+revision=1
+buildstyle=gnu-makefile
+hostmakedepends="asciidoc m4"
+depends="awk bash coreutils grep pacman util-linux"
+short_desc="Scripts to aid in installing Arch Linux"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.archlinux.org/archlinux/arch-install-scripts"
+distfiles="https://gitlab.archlinux.org/archlinux/arch-install-scripts/-/archive/v${version}/${pkgname}-v${version}.tar.gz"
+checksum=9b39bcb93e0e104e14d3cfa60a094d35e76d39276af3aeac69620a89f71abfc7
+
+do_install() {
+	make PREFIX=/usr DESTDIR=${DESTDIR} install
+}
