@@ -1,0 +1,18 @@
+# Template file for 'yai'
+pkgname=yai
+version=0.6.0
+revision=1
+build_style=go
+go_import_path=github.com/ekkinox/yai
+short_desc="Your AI powered terminal assistant"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="MIT"
+homepage="https://github.com/ekkinox/yai"
+changelog="https://raw.githubusercontent.com/ekkinox/yai/refs/heads/main/CHANGELOG.md"
+distfiles="https://github.com/ekkinox/yai/archive/refs/tags/${version}.tar.gz"
+checksum=16fc15da1157d20b636873d867258c9a0326c52150a02e127a77e505c31351ca
+make_check=no
+
+post_install() {
+	vlicense LICENCE
+}
