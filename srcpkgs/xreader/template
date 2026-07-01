@@ -1,7 +1,7 @@
 # Template file for 'xreader'
 pkgname=xreader
-version=4.2.3
-revision=2
+version=4.6.5
+revision=1
 build_style=meson
 build_helper="gir"
 configure_args="-Dintrospection=$(vopt_if gir true false) -Dthumbnailer=false"
@@ -15,8 +15,8 @@ short_desc="Document viewer capable of displaying formats like PDF and Postscrip
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/linuxmint/xreader"
-distfiles="https://github.com/linuxmint/xreader/archive/${version}.tar.gz"
-checksum=57d8c20eddcb90ba768f386c444519b5f330c1aacfcaa3deb33db1ad1d7bbd6d
+distfiles="https://github.com/linuxmint/xreader/archive/refs/tags/${version}.tar.gz"
+checksum=502e069c9f20861544067433ec81a3859c9453b931b58f38e5e442381dc39528
 # XX dogtail is needed for testing (not in repo)
 # XX tests need xorg running
 make_check=no
