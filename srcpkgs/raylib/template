@@ -1,0 +1,17 @@
+# Template file for 'raylib'
+pkgname=raylib
+version=6.0
+revision=1
+build_style=cmake
+configure_args="-DCUSTOMIZE_BUILD=ON -DPLATFORM=Desktop -DBUILD_SHARED_LIBS=ON
+ -DUSE_EXTERNAL_GLFW=ON -DINCLUDE_EVERYTHING=ON"
+hostmakedepends="pkg-config"
+makedepends="glfw-devel"
+depends="glfw-devel"
+short_desc="Simple and easy-to-use library for videogames programming"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="Zlib"
+homepage="https://www.raylib.com/"
+changelog="https://raw.githubusercontent.com/raysan5/raylib/refs/heads/master/CHANGELOG"
+distfiles="https://github.com/raysan5/raylib/archive/refs/tags/${version}.tar.gz"
+checksum=2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b
