@@ -1,0 +1,21 @@
+# Template file for 'reddit-tui'
+pkgname=reddit-tui
+version=0.3.9
+revision=1
+hostmakedepends="go"
+short_desc="Terminal UI for Reddit"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="MIT"
+homepage="https://github.com/tonymajestro/reddit-tui"
+distfiles="https://github.com/tonymajestro/reddit-tui/archive/refs/tags/v${version}.tar.gz"
+checksum=4f5dad492b776e67f9ed94fdc7bbcccabaa921ffdba7eb184619a830d05b5a33
+
+do_build() {
+	go build -buildmode=pie -trimpath -o reddittui main.go
+}
+
+do_install() {
+	vbin reddittui
+	vlicense LICENSE.txt
+	vdoc README.md
+}
