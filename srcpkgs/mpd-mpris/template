@@ -1,0 +1,17 @@
+# Template file for 'mpd-mpris'
+pkgname=mpd-mpris
+version=0.4.3
+revision=1
+build_style=go
+go_import_path="github.com/natsukagami/mpd-mpris"
+short_desc="Implementation of the MPRIS protocol for MPD"
+maintainer="Your Name <you@example.com>"
+license="MIT"
+homepage="https://github.com/natsukagami/mpd-mpris"
+distfiles="https://github.com/natsukagami/mpd-mpris/archive/refs/tags/v${version}.tar.gz"
+checksum=c8737299e6368b15635481508a8dc69448e442e550f7c3123e38f32431a1ae30
+
+post_install() {
+	rm -f ${DESTDIR}/usr/lib/systemd/user/mpd-mpris.service
+	vlicense LICENSE
+}
