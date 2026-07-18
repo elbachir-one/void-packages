@@ -1,0 +1,27 @@
+# Template file for 'min'
+pkgname=min
+version=1.35.6
+revision=1
+archs="x86_64"
+hostmakedepends="tar xz"
+depends="gtk+3 nss libXScrnSaver"
+short_desc="Fast, minimal browser that protects your privacy"
+maintainer="elbachir-one <bachiralfa@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/minbrowser/min"
+changelog="https://github.com/minbrowser/min/releases"
+distfiles="https://github.com/minbrowser/min/releases/download/v${version}/min-${version}-amd64.deb"
+checksum=6979ecb43cc996fa41de20ebf788741cb1562c3ffedb53620fee3081167f242d
+
+do_extract() {
+	ar x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/min-${version}-amd64.deb"
+	tar -xf data.tar.xz
+}
+
+do_install() {
+	vcopy opt /
+
+	vinstall usr/share/applications/min.desktop 644 usr/share/applications
+	vinstall usr/share/icons/hicolor/256x256/apps/min.png 644 \
+		usr/share/icons/hicolor/256x256/apps
+}
