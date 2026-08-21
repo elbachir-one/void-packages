@@ -1,0 +1,16 @@
+# Template file for 'pikchr'
+# Template file for pikchr
+pkgname=pikchr
+version=20260403102956
+revision=1
+build_style=gnu-makefile
+short_desc="PIC-like markup language for diagrams"
+maintainer="Your Name <youremail@domain.com>"
+license="0BSD"
+homepage="https://pikchr.org"
+distfiles="https://pikchr.org/home/tarball/pikchr-${version}.tar.gz"
+checksum=c55d4e7cc8c91da0c20c296103b00f3c984225d6102bc6dfd7d38b6891495a9e
+
+do_install() {
+	vbin pikchr
+}

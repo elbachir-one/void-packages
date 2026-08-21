@@ -1,0 +1,14 @@
+--- a/Makefile	2026-08-21 19:00:19.396417219 +0100
++++ b/Makefile	2026-08-21 19:01:00.647796060 +0100
+@@ -43,9 +43,10 @@
+ 
+ test:	pikchr
+ 	./pikchr --dont-stop tests/*.pikchr >out.html
+-	open out.html
++	xdg-open out.html
+ 	./pikchr --dont-stop --dark-mode */*.pikchr >darkmode.html
+ 	open darkmode.html
++	xdg-open darkmode.html
+ 
+ clean:	
+ 	rm -f pikchr pikchr.c pikchr.h pikchr.out lemon out.html
